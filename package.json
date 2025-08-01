@@ -2,6 +2,7 @@
   "name": "inventory-management-app",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "file-saver": "^2.0.5",
