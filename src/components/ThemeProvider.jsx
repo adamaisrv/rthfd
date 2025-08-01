@@ -5,28 +5,6 @@ export default function ThemeProvider({ children }) {
   const { settings } = useStore();
 
   useEffect(() => {
-    // Listen for system theme changes when auto mode is enabled
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemThemeChange = (e) => {
-      if (settings?.theme === 'auto') {
-        if (e.matches) {
-          document.documentElement.classList.add('dark');
-          document.body.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          document.body.classList.remove('dark');
-        }
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleSystemThemeChange);
-    };
-  }, [settings?.theme]);
-
-  useEffect(() => {
     // Apply color scheme to CSS variables
     if (settings?.colors) {
       Object.entries(settings.colors).forEach(([key, color]) => {
@@ -34,9 +12,11 @@ export default function ThemeProvider({ children }) {
       });
     }
 
-    // Apply theme
+    // Apply theme - clean implementation
     if (settings?.theme) {
-      document.documentElement.setAttribute('data-theme', settings.theme);
+      // Remove all theme classes first
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
 
       if (settings.theme === 'dark') {
         document.documentElement.classList.add('dark');
@@ -51,10 +31,8 @@ export default function ThemeProvider({ children }) {
           document.documentElement.classList.remove('dark');
           document.body.classList.remove('dark');
         }
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('dark');
       }
+      // Light theme is default (no classes needed)
     }
 
     // Apply language and direction
@@ -79,6 +57,27 @@ export default function ThemeProvider({ children }) {
       document.documentElement.classList.remove('compact-mode');
     }
 
+    // Listen for system theme changes when auto mode is enabled
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleSystemThemeChange = (e) => {
+      if (settings?.theme === 'auto') {
+        document.documentElement.classList.remove('dark');
+        document.body.classList.remove('dark');
+        
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+          document.body.classList.add('dark');
+        }
+      }
+    };
+
+    if (settings?.theme === 'auto') {
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
+    }
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleSystemThemeChange);
+    };
   }, [settings]);
 
   return children;
