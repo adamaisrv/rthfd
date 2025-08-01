@@ -22,8 +22,8 @@ A modern, responsive inventory management system built with React and Vite.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/adamaisrv/ghfsdsvf.git
-   cd ghfsdsvf
+   git clone https://github.com/adamaisrv/tolat.git
+   cd tolat
    ```
 
 2. Install dependencies:
