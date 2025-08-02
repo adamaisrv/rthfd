@@ -24,7 +24,7 @@ function App() {
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Top Navigation Bar */}
-          <header className="bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-sm relative z-50" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+          <header className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-slate-700/50 shadow-sm relative z-50">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
                 <button
@@ -39,7 +39,7 @@ function App() {
                   <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                     نظام إدارة المخزون المتقدم
                   </h1>
-                  <p className="text-sm text-gray-500">إدارة ذكية ومتطورة للمخزون</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">إدارة ذكية ومتطورة للمخزون</p>
                 </div>
               </div>
 
@@ -48,14 +48,14 @@ function App() {
                 <AlertCenter />
                 <NotificationCenter />
                 <div className="text-right">
-                  <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>مرحباً بك</p>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{new Date().toLocaleDateString('ar-SA')}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">مرحباً بك</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{new Date().toLocaleDateString('ar-SA')}</p>
                 </div>
               </div>
             </div>
           </header>
 
-          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10" style={{ backgroundColor: 'var(--bg-primary)' }}>
+          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10 bg-gray-50 dark:bg-slate-900">
             <div className="max-w-7xl mx-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
