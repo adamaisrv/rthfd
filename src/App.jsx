@@ -24,7 +24,7 @@ function App() {
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Top Navigation Bar */}
-          <header className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-slate-700/50 shadow-sm relative z-50">
+          <header className="bg-white dark:bg-slate-800 backdrop-blur-lg border-b border-gray-200 dark:border-slate-700 shadow-sm relative z-50">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
                 <button

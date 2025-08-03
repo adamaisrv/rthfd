@@ -48,7 +48,7 @@ export default function Dashboard() {
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="group relative bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-white/20 hover:transform hover:scale-105"
+            className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-gray-200 dark:border-slate-700 hover:transform hover:scale-105"
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
             }}
@@ -77,7 +77,7 @@ export default function Dashboard() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Low Stock Alert */}
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-2xl transition-all duration-300">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 p-6 hover:shadow-2xl transition-all duration-300">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
               تنبيهات المخزون
@@ -123,7 +123,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Activities */}
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-2xl transition-all duration-300">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 p-6 hover:shadow-2xl transition-all duration-300">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
               آخر العمليات

@@ -145,7 +145,7 @@ export default function Inventory() {
       </div>
 
       {/* Inventory Table */}
-      <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200/50 bg-gradient-to-r from-emerald-50 to-teal-50">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
@@ -163,19 +163,20 @@ export default function Inventory() {
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200/50">
             <thead className="bg-gradient-to-r from-slate-50 to-blue-50">
+            <thead className="bg-gray-50 dark:bg-slate-700">
               <tr>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">المنتج</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الكمية الحالية</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الحد الأدنى</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">القيمة الإجمالية</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الموقع</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الحالة</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">المنتج</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الكمية الحالية</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الحد الأدنى</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">القيمة الإجمالية</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الموقع</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الحالة</th>
                 {inventoryMode && (
-                  <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">إجراءات</th>
+                  <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">إجراءات</th>
                 )}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200/50">
+            <tbody className="bg-white dark:bg-slate-800 divide-y divide-gray-200 dark:divide-slate-700">
               {products.map((product) => {
                 const isLowStock = product.quantity <= product.minQuantity;
                 const totalValue = product.quantity * product.price;

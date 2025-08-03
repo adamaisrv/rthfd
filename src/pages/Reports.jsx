@@ -264,7 +264,7 @@ export default function Reports() {
       </div>
 
       {/* Category Distribution */}
-      <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200/50 bg-gradient-to-r from-purple-50 to-pink-50">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">
             التوزيع حسب التصنيف
@@ -304,8 +304,9 @@ export default function Reports() {
                   <div key={category} className="group">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-gray-700 font-medium">{category}</span>
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">{category}</span>
                       <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
                           {data.count} منتج - {data.totalValue.toLocaleString()} ر.س
                         </span>
                         <span className="text-sm font-bold text-gray-900 dark:text-white">
@@ -313,7 +314,7 @@ export default function Reports() {
                         </span>
                       </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-gray-200 dark:bg-slate-600 rounded-full h-3 overflow-hidden">
                       <div
                         className={`bg-gradient-to-r ${color} h-3 rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg`}
                         style={{
