@@ -325,7 +325,16 @@ const useStore = create(
 
       // Settings actions
       updateSettings: (newSettings) => {
+        console.log('Updating settings:', newSettings); // Debug log
         set({ settings: newSettings });
+        
+        // Force theme application
+        if (newSettings.theme) {
+          setTimeout(() => {
+            const event = new CustomEvent('settings-updated', { detail: newSettings });
+            window.dispatchEvent(event);
+          }, 50);
+        }
       },
 
       resetSettings: () => {

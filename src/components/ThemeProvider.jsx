@@ -5,6 +5,13 @@ export default function ThemeProvider({ children }) {
   const { settings } = useStore();
 
   useEffect(() => {
+    // Get the current theme setting
+    const currentTheme = settings?.theme || 'light';
+    
+    // Always remove dark class first to ensure clean state
+    document.documentElement.classList.remove('dark');
+    document.body.classList.remove('dark');
+    
     // Apply color scheme to CSS variables
     if (settings?.colors) {
       Object.entries(settings.colors).forEach(([key, color]) => {
@@ -12,28 +19,19 @@ export default function ThemeProvider({ children }) {
       });
     }
 
-    // Apply theme - clean implementation
-    if (settings?.theme) {
-      // Remove all theme classes first
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-
-      if (settings.theme === 'dark') {
+    // Apply theme based on setting
+    if (currentTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else if (currentTheme === 'auto') {
+      // Check system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
         document.documentElement.classList.add('dark');
         document.body.classList.add('dark');
-      } else if (settings.theme === 'auto') {
-        // Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (prefersDark) {
-          document.documentElement.classList.add('dark');
-          document.body.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          document.body.classList.remove('dark');
-        }
       }
-      // Light theme is default (no classes needed)
     }
+    // Light theme is default (no dark classes)
 
     // Apply language and direction
     if (settings?.language) {
@@ -60,7 +58,7 @@ export default function ThemeProvider({ children }) {
     // Listen for system theme changes when auto mode is enabled
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleSystemThemeChange = (e) => {
-      if (settings?.theme === 'auto') {
+      if (currentTheme === 'auto') {
         document.documentElement.classList.remove('dark');
         document.body.classList.remove('dark');
         
@@ -71,7 +69,7 @@ export default function ThemeProvider({ children }) {
       }
     };
 
-    if (settings?.theme === 'auto') {
+    if (currentTheme === 'auto') {
       mediaQuery.addEventListener('change', handleSystemThemeChange);
     }
 
@@ -79,6 +77,9 @@ export default function ThemeProvider({ children }) {
       mediaQuery.removeEventListener('change', handleSystemThemeChange);
     };
   }, [settings]);
+
+  // Force re-render when theme changes
+  useEffect(() => {}, [settings?.theme]);
 
   return children;
 }

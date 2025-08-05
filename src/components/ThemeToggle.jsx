@@ -14,10 +14,17 @@ export default function ThemeToggle() {
   const currentTheme = settings?.theme || 'light';
 
   const handleThemeChange = (themeId) => {
+    console.log('Changing theme to:', themeId); // Debug log
     updateSettings({
       ...settings,
       theme: themeId
     });
+    
+    // Force immediate theme application
+    setTimeout(() => {
+      const event = new CustomEvent('theme-changed', { detail: { theme: themeId } });
+      window.dispatchEvent(event);
+    }, 100);
   };
 
   const getCurrentThemeIcon = () => {
@@ -47,6 +54,9 @@ export default function ThemeToggle() {
             >
               <theme.icon className="h-4 w-4" />
               <span className="text-sm font-medium">{theme.name}</span>
+              {currentTheme === theme.id && (
+                <span className="mr-auto text-xs">✓</span>
+              )}
             </button>
           ))}
         </div>
