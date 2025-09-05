@@ -37,7 +37,7 @@ export default function Dashboard() {
     <div className="space-y-8">
       {/* Header Section */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">
           لوحة التحكم الذكية
         </h1>
         <p className="text-gray-600 text-lg">نظرة شاملة على حالة المخزون والعمليات</p>
@@ -48,15 +48,15 @@ export default function Dashboard() {
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-gray-200 dark:border-slate-700 hover:transform hover:scale-105"
+            className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-gray-200 hover:transform hover:scale-105"
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
             }}
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">{stat.title}</p>
-                <p className="text-3xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-gray-600 mb-1">{stat.title}</p>
+                <p className="text-3xl font-bold text-gray-900">
                   {stat.value}
                 </p>
               </div>
@@ -77,9 +77,9 @@ export default function Dashboard() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Low Stock Alert */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 p-6 hover:shadow-2xl transition-all duration-300">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 hover:shadow-2xl transition-all duration-300">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-gray-900">
               تنبيهات المخزون
             </h2>
             <div className="w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
@@ -95,7 +95,7 @@ export default function Dashboard() {
                         <AlertTriangle className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900 dark:text-white">{product.name}</p>
+                        <p className="font-semibold text-gray-900">{product.name}</p>
                         <p className="text-sm text-gray-600">الكمية: {product.quantity} | الحد الأدنى: {product.minQuantity}</p>
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export default function Dashboard() {
                     <Package className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">جميع المنتجات في حالة جيدة</p>
+                    <p className="font-semibold text-gray-900">جميع المنتجات في حالة جيدة</p>
                     <p className="text-sm text-gray-600">لا توجد منتجات تحتاج إعادة تموين</p>
                   </div>
                 </div>
@@ -123,9 +123,9 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Activities */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 p-6 hover:shadow-2xl transition-all duration-300">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 hover:shadow-2xl transition-all duration-300">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-gray-900">
               آخر العمليات
             </h2>
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -138,7 +138,7 @@ export default function Dashboard() {
                   <Package className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900 dark:text-white">إضافة منتج جديد</p>
+                  <p className="font-semibold text-gray-900">إضافة منتج جديد</p>
                   <p className="text-sm text-gray-600">ماوس لاسلكي - منذ ساعتين</p>
                 </div>
                 <div className="text-xs text-green-600 font-medium">جديد</div>
@@ -151,7 +151,7 @@ export default function Dashboard() {
                   <TrendingUp className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900 dark:text-white">تحديث المخزون</p>
+                  <p className="font-semibold text-gray-900">تحديث المخزون</p>
                   <p className="text-sm text-gray-600">لابتوب Dell - منذ 4 ساعات</p>
                 </div>
                 <div className="text-xs text-purple-600 font-medium">محدث</div>

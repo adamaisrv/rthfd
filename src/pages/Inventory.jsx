@@ -53,10 +53,10 @@ export default function Inventory() {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-gray-900">
             إدارة المخزون والجرد
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">مراقبة وإدارة مستويات المخزون</p>
+          <p className="text-gray-600 text-lg">مراقبة وإدارة مستويات المخزون</p>
         </div>
 
         <div className="flex gap-4">
@@ -101,12 +101,12 @@ export default function Inventory() {
         ].map((stat, index) => (
           <div
             key={index}
-            className={`group relative bg-gradient-to-br ${stat.bgColor} dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-white/20 dark:border-slate-600 hover:transform hover:scale-105`}
+            className={`group relative bg-gradient-to-br ${stat.bgColor} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out p-6 border border-white/20 hover:transform hover:scale-105`}
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">{stat.title}</p>
-                <p className="text-3xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-gray-600 mb-1">{stat.title}</p>
+                <p className="text-3xl font-bold text-gray-900">
                   {stat.value}
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function Inventory() {
             placeholder="البحث عن منتج بالاسم أو الكود..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pr-12 pl-6 py-4 bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-600 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-300 ease-out shadow-lg text-lg placeholder-gray-400 text-gray-900 dark:text-white"
+            className="w-full pr-12 pl-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 ease-out shadow-lg text-lg placeholder-gray-400 text-gray-900"
           />
         </div>
 
@@ -137,7 +137,7 @@ export default function Inventory() {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-6 py-4 bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-600 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-300 text-gray-900 dark:text-white"
+            className="px-6 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 text-gray-900"
           >
             <option value="">جميع التصنيفات</option>
             <option value="electronics">إلكترونيات</option>
@@ -151,20 +151,20 @@ export default function Inventory() {
       </div>
 
       {/* Inventory Table */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-600">
-            <thead className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-700 dark:to-slate-600">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gradient-to-r from-slate-50 to-blue-50">
               <tr>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">المنتج</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">التصنيف</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الكمية الحالية</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الحد الأدنى</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الحالة</th>
-                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700 dark:text-gray-300">الإجراءات</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">المنتج</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">التصنيف</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الكمية الحالية</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الحد الأدنى</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الحالة</th>
+                <th className="px-6 py-4 text-right text-sm font-bold text-gray-700">الإجراءات</th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-slate-800 divide-y divide-gray-200 dark:divide-slate-600">
+            <tbody className="bg-white divide-y divide-gray-200">
               {filteredProducts.map((product) => {
                 const isLowStock = product.quantity <= product.minQuantity;
                 const isCritical = product.quantity === 0;
@@ -172,9 +172,9 @@ export default function Inventory() {
                 return (
                   <tr
                     key={product.id}
-                    className={`group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-slate-700/50 dark:hover:to-slate-600/50 transition-all duration-300 ${
-                      isCritical ? 'bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-l-4 border-red-400' : 
-                      isLowStock ? 'bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-l-4 border-yellow-400' : ''
+                    className={`group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-300 ${
+                      isCritical ? 'bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-400' : 
+                      isLowStock ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400' : ''
                     }`}
                   >
                     <td className="px-6 py-5 whitespace-nowrap">
@@ -183,7 +183,7 @@ export default function Inventory() {
                           <span className="text-white font-bold text-sm">{product.name.charAt(0)}</span>
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-gray-900 dark:text-white">{product.name}</div>
+                          <div className="text-sm font-bold text-gray-900">{product.name}</div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">{product.code}</div>
                         </div>
                       </div>
@@ -205,17 +205,15 @@ export default function Inventory() {
                       </span>
                     </td>
                     <td className="px-6 py-5 whitespace-nowrap">
-                      <span className="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded-lg">
+                      <span className="text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
                         {product.minQuantity}
                       </span>
                     </td>
                     <td className="px-6 py-5 whitespace-nowrap">
                       <span className={`px-3 py-1 text-xs rounded-full font-medium ${
-                        isCritical
-                          ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
-                          : isLowStock
-                          ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200'
-                          : 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                        isCritical ? 'bg-red-100 text-red-800' :
+                        isLowStock ? 'bg-yellow-100 text-yellow-800' :
+                        'bg-green-100 text-green-800'
                       }`}>
                         {isCritical ? 'نفد المخزون' : isLowStock ? 'منخفض' : 'جيد'}
                       </span>
@@ -245,35 +243,35 @@ export default function Inventory() {
           <div className="flex items-center justify-center min-h-screen px-4">
             <div className="fixed inset-0 bg-gradient-to-br from-slate-900/50 via-blue-900/30 to-purple-900/50" onClick={() => setStockUpdateModal(null)} />
             
-            <div className="relative bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl border border-white/20 dark:border-slate-700/20">
+            <div className="relative bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-white/20">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   تحديث المخزون
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600">
                   {stockUpdateModal.name}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">الكمية الجديدة</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">الكمية الجديدة</label>
                   <input
                     type="number"
                     value={newQuantity}
                     onChange={(e) => setNewQuantity(e.target.value)}
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-300 text-lg text-center font-bold text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 text-lg text-center font-bold text-gray-900"
                     placeholder="0"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">سبب التحديث</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">سبب التحديث</label>
                   <input
                     type="text"
                     value={updateReason}
                     onChange={(e) => setUpdateReason(e.target.value)}
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-300 text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 text-gray-900"
                     placeholder="مثال: إضافة مخزون جديد"
                   />
                 </div>
@@ -282,7 +280,7 @@ export default function Inventory() {
               <div className="flex gap-4 mt-8">
                 <button
                   onClick={() => setStockUpdateModal(null)}
-                  className="flex-1 px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 rounded-xl transition-all duration-300 font-medium"
+                  className="flex-1 px-6 py-3 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all duration-300 font-medium"
                 >
                   إلغاء
                 </button>

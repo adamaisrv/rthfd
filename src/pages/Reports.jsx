@@ -144,7 +144,7 @@ export default function Reports() {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-gray-900">
             التقارير والإحصائيات
           </h1>
           <p className="text-gray-600 text-lg">تحليل شامل لبيانات المخزون</p>
@@ -204,8 +204,8 @@ export default function Reports() {
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">{stat.title}</p>
-                <p className="text-3xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-gray-600 mb-1">{stat.title}</p>
+                <p className="text-3xl font-bold text-gray-900">
                   {stat.value}
                 </p>
               </div>
@@ -264,9 +264,9 @@ export default function Reports() {
       </div>
 
       {/* Category Distribution */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200/50 bg-gradient-to-r from-purple-50 to-pink-50">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-xl font-bold text-gray-900">
             التوزيع حسب التصنيف
           </h2>
         </div>
@@ -304,17 +304,17 @@ export default function Reports() {
                   <div key={category} className="group">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-gray-700 font-medium">{category}</span>
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">{category}</span>
+                      <span className="text-gray-700 font-medium">{category}</span>
                       <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                        <span className="text-sm text-gray-600">
                           {data.count} منتج - {data.totalValue.toLocaleString()} ر.س
                         </span>
-                        <span className="text-sm font-bold text-gray-900 dark:text-white">
+                        <span className="text-sm font-bold text-gray-900">
                           {percentage.toFixed(1)}%
                         </span>
                       </div>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-slate-600 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                       <div
                         className={`bg-gradient-to-r ${color} h-3 rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg`}
                         style={{
@@ -325,7 +325,7 @@ export default function Reports() {
                     </div>
                   </div>
                 );
-              });
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
             })()}
           </div>
         </div>

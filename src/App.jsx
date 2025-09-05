@@ -19,12 +19,12 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
           <ToastContainer />
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Top Navigation Bar */}
-          <header className="bg-white dark:bg-slate-800 backdrop-blur-lg border-b border-gray-200 dark:border-slate-700 shadow-sm relative z-50">
+          <header className="bg-white backdrop-blur-lg border-b border-gray-200 shadow-sm relative z-50">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
                 <button
@@ -36,10 +36,10 @@ function App() {
                   </svg>
                 </button>
                 <div className="hidden lg:block">
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  <h1 className="text-xl font-bold text-gray-900">
                     نظام إدارة المخزون المتقدم
                   </h1>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">إدارة ذكية ومتطورة للمخزون</p>
+                  <p className="text-sm text-gray-500">إدارة ذكية ومتطورة للمخزون</p>
                 </div>
               </div>
 
@@ -48,14 +48,14 @@ function App() {
                 <AlertCenter />
                 <NotificationCenter />
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">مرحباً بك</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{new Date().toLocaleDateString('ar-SA')}</p>
+                  <p className="text-sm font-medium text-gray-900">مرحباً بك</p>
+                  <p className="text-xs text-gray-500">{new Date().toLocaleDateString('ar-SA')}</p>
                 </div>
               </div>
             </div>
           </header>
 
-          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10 bg-gray-50 dark:bg-slate-900">
+          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10 bg-gray-50">
             <div className="max-w-7xl mx-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />

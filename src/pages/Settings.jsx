@@ -201,7 +201,7 @@ export default function Settings() {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold text-gray-900">
             الإعدادات
           </h1>
           <p className="text-gray-600 text-lg">تخصيص التطبيق حسب احتياجاتك</p>
@@ -229,7 +229,7 @@ export default function Settings() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar Tabs */}
         <div className="lg:col-span-1">
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 dark:border-slate-700/20 p-2">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-2">
             <div className="space-y-1">
               {tabs.map((tab) => (
                 <button
@@ -238,7 +238,7 @@ export default function Settings() {
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-gray-900 dark:hover:text-white'
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
                   <tab.icon className="h-5 w-5" />
@@ -251,28 +251,28 @@ export default function Settings() {
 
         {/* Content Area */}
         <div className="lg:col-span-3">
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 dark:border-slate-700/20 p-8">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-8">
             
             {/* General Settings */}
             {activeTab === 'general' && (
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                    <Globe className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <Globe className="h-6 w-6 text-indigo-600" />
                     الإعدادات العامة
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Currency */}
                     <div>
-                      <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
+                      <label className="block text-sm font-bold text-gray-700 mb-3">
                         <DollarSign className="h-4 w-4 inline mr-2" />
                         العملة
                       </label>
                       <select
                         value={tempSettings.currency}
                         onChange={(e) => handleSettingChange('currency', e.target.value)}
-                        className="w-full px-4 py-3 bg-white dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900 transition-all duration-300 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 text-gray-900"
                       >
                         {currencies.map(currency => (
                           <option key={currency.code} value={currency.code}>
@@ -284,14 +284,14 @@ export default function Settings() {
 
                     {/* Language */}
                     <div>
-                      <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
+                      <label className="block text-sm font-bold text-gray-700 mb-3">
                         <Languages className="h-4 w-4 inline mr-2" />
                         اللغة
                       </label>
                       <select
                         value={tempSettings.language}
                         onChange={(e) => handleSettingChange('language', e.target.value)}
-                        className="w-full px-4 py-3 bg-white dark:bg-slate-700 border-2 border-gray-200 dark:border-slate-600 rounded-xl focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900 transition-all duration-300 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 text-gray-900"
                       >
                         {languages.map(lang => (
                           <option key={lang.code} value={lang.code}>
@@ -305,16 +305,16 @@ export default function Settings() {
 
                 {/* Display Settings */}
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <Monitor className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Monitor className="h-5 w-5 text-indigo-600" />
                     إعدادات العرض
                   </h4>
                   
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                       <div>
-                        <label className="font-medium text-gray-900 dark:text-white">عدد العناصر في الصفحة</label>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">عدد المنتجات المعروضة في كل صفحة</p>
+                        <label className="font-medium text-gray-900">عدد العناصر في الصفحة</label>
+                        <p className="text-sm text-gray-600">عدد المنتجات المعروضة في كل صفحة</p>
                       </div>
                       <select
                         value={tempSettings.display?.itemsPerPage || 10}
@@ -322,7 +322,7 @@ export default function Settings() {
                           ...tempSettings.display,
                           itemsPerPage: parseInt(e.target.value)
                         })}
-                        className="px-3 py-2 bg-white dark:bg-slate-600 border border-gray-300 dark:border-slate-500 rounded-lg text-gray-900 dark:text-white"
+                        className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900"
                       >
                         <option value={5}>5</option>
                         <option value={10}>10</option>
@@ -332,10 +332,10 @@ export default function Settings() {
                       </select>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                       <div>
-                        <label className="font-medium text-gray-900 dark:text-white">الأنيميشن والتأثيرات</label>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">تفعيل الحركات والتأثيرات البصرية</p>
+                        <label className="font-medium text-gray-900">الأنيميشن والتأثيرات</label>
+                        <p className="text-sm text-gray-600">تفعيل الحركات والتأثيرات البصرية</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
@@ -351,10 +351,10 @@ export default function Settings() {
                       </label>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-700 rounded-xl">
+                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                       <div>
-                        <label className="font-medium text-gray-900 dark:text-white">الوضع المضغوط</label>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">عرض أكثر كثافة للمعلومات</p>
+                        <label className="font-medium text-gray-900">الوضع المضغوط</label>
+                        <p className="text-sm text-gray-600">عرض أكثر كثافة للمعلومات</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
