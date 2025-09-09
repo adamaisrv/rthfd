@@ -304,7 +304,6 @@ export default function Reports() {
                   <div key={category} className="group">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-gray-700 font-medium">{category}</span>
-                      <span className="text-gray-700 font-medium">{category}</span>
                       <div className="flex items-center gap-3">
                         <span className="text-sm text-gray-600">
                           {data.count} منتج - {data.totalValue.toLocaleString()} ر.س
@@ -325,14 +324,9 @@ export default function Reports() {
                     </div>
                   </div>
                 );
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+              });
             })()}
           </div>
-              }
-              )
-        }
-        )
-        }
         </div>
       </div>
     </div>
