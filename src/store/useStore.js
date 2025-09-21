@@ -391,7 +391,6 @@ const useStore = create(
       partialize: (state) => ({
         products: state.products,
         settings: state.settings,
-        theme: state.theme,
         language: state.language
       })
     }

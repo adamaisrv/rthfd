@@ -17,7 +17,6 @@ function App() {
   const { sidebarOpen, setSidebarOpen, toggleSidebar } = useStore();
 
   return (
-    <ThemeProvider>
       <Router>
         <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
           <ToastContainer />
@@ -44,7 +43,6 @@ function App() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <ThemeToggle />
                 <AlertCenter />
                 <NotificationCenter />
                 <div className="text-right">
@@ -72,7 +70,6 @@ function App() {
         {/* Toast Notifications */}
         <ToastContainer />
       </Router>
-    </ThemeProvider>
   );
 }
 
