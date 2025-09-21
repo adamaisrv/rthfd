@@ -384,33 +384,6 @@ export default function Settings() {
                   </h3>
 
                   {/* Theme Selection */}
-                  <div className="mb-8">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">السمة</h4>
-                    <div className="grid grid-cols-3 gap-4">
-                      {themes.map(theme => (
-                        <button
-                          key={theme.id}
-                          onClick={() => handleSettingChange('theme', theme.id)}
-                          className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                            tempSettings.theme === theme.id
-                              ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 dark:border-purple-400'
-                              : 'border-gray-200 dark:border-slate-600 hover:border-purple-300 dark:hover:border-purple-400 bg-white dark:bg-slate-700'
-                          }`}
-                        >
-                          <theme.icon className={`h-8 w-8 mx-auto mb-2 ${
-                            tempSettings.theme === theme.id
-                              ? 'text-purple-600 dark:text-purple-400'
-                              : 'text-gray-600 dark:text-gray-300'
-                          }`} />
-                          <span className={`font-medium ${
-                            tempSettings.theme === theme.id
-                              ? 'text-purple-600 dark:text-purple-400'
-                              : 'text-gray-700 dark:text-gray-300'
-                          }`}>{theme.name}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Color Customization */}
                   <div>
