@@ -4,8 +4,6 @@ import Sidebar from './components/Sidebar';
 import NotificationCenter from './components/NotificationCenter';
 import AlertCenter from './components/AlertCenter';
 import ToastContainer from './components/ToastContainer';
-import ThemeProvider from './components/ThemeProvider';
-import ThemeToggle from './components/ThemeToggle';
 import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Inventory from './pages/Inventory';
@@ -66,9 +64,6 @@ function App() {
           </main>
         </div>
       </div>
-
-        {/* Toast Notifications */}
-        <ToastContainer />
       </Router>
   );
 }
