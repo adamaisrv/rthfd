@@ -122,7 +122,7 @@ export default function AlertCenter() {
           />
           
           {/* Panel */}
-          <div className="absolute top-full left-0 mt-2 w-96 bg-white/95 dark:bg-slate-800/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 dark:border-slate-700/20 z-[99999] alert-panel max-h-96 overflow-hidden">
+          <div className="absolute top-full left-0 mt-2 w-96 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 z-[99999] alert-panel max-h-96 overflow-hidden">
             {/* Header */}
             <div className="p-4 border-b border-gray-200/50 bg-gradient-to-r from-red-50 to-orange-50">
               <div className="flex items-center justify-between">
