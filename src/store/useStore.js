@@ -2,6 +2,42 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { inventoryNotifications, checkInventoryAlerts } from '../utils/notifications';
 
+// Default settings object
+const defaultSettings = {
+  currency: 'SAR',
+  language: 'ar',
+  notifications: {
+    sound: true,
+    browser: true,
+    email: false,
+    lowStock: true,
+    expiry: true
+  },
+  colors: {
+    primary: '#3B82F6',
+    secondary: '#8B5CF6',
+    accent: '#10B981',
+    success: '#059669',
+    warning: '#D97706',
+    error: '#DC2626',
+    info: '#0EA5E9'
+  },
+  display: {
+    itemsPerPage: 10,
+    showAnimations: true,
+    compactMode: false
+  },
+  security: {
+    autoLockTime: '30',
+    rememberLogin: true,
+    encryption: false
+  },
+  backup: {
+    autoBackup: true,
+    backupInterval: 'daily'
+  }
+};
+
 // Initial sample data
 const initialProducts = [
   { 
@@ -388,6 +424,26 @@ const useStore = create(
     {
       name: 'inventory-store',
       storage: createJSONStorage(() => localStorage),
+      merge: (persistedState, currentState) => {
+        // Deep merge function to ensure all default properties are present
+        const deepMerge = (target, source) => {
+          const result = { ...target };
+          for (const key in source) {
+            if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+              result[key] = deepMerge(target[key] || {}, source[key]);
+            } else {
+              result[key] = source[key];
+            }
+          }
+          return result;
+        };
+        
+        return {
+          ...currentState,
+          ...persistedState,
+          settings: deepMerge(defaultSettings, persistedState?.settings || {})
+        };
+      },
       partialize: (state) => ({
         products: state.products,
         settings: state.settings,

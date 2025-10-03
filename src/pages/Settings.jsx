@@ -8,13 +8,25 @@ export default function Settings() {
   const [hasChanges, setHasChanges] = useState(false);
 
   const handleSettingChange = (category, key, value) => {
-    const newSettings = {
-      ...localSettings,
-      [category]: {
-        ...localSettings[category],
-        [key]: value
-      }
-    };
+    let newSettings;
+    
+    if (key === null) {
+      // Top-level property (like currency, language)
+      newSettings = {
+        ...localSettings,
+        [category]: value
+      };
+    } else {
+      // Nested property (like notifications.sound, security.autoLockTime)
+      newSettings = {
+        ...localSettings,
+        [category]: {
+          ...localSettings[category],
+          [key]: value
+        }
+      };
+    }
+    
     setLocalSettings(newSettings);
     setHasChanges(true);
   };
