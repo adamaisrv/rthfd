@@ -9,6 +9,7 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
   const [includeText, setIncludeText] = useState(true);
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
   const [foregroundColor, setForegroundColor] = useState('#000000');
+  const [validationError, setValidationError] = useState(null);
 
   const sizeOptions = {
     small: { width: 1, height: 50, fontSize: 12 },
@@ -25,9 +26,68 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
     { value: 'ITF14', label: 'ITF14' }
   ];
 
+  // Validation function for barcode formats
+  const validateBarcodeInput = (code, format) => {
+    if (!code) return 'كود المنتج مطلوب';
+    
+    switch (format) {
+      case 'EAN13':
+        if (!/^\d{12,13}$/.test(code)) {
+          return 'EAN13 يتطلب 12-13 رقم فقط';
+        }
+        break;
+      case 'EAN8':
+        if (!/^\d{7,8}$/.test(code)) {
+          return 'EAN8 يتطلب 7-8 أرقام فقط';
+        }
+        break;
+      case 'UPC':
+        if (!/^\d{11,12}$/.test(code)) {
+          return 'UPC يتطلب 11-12 رقم فقط';
+        }
+        break;
+      case 'ITF14':
+        if (!/^\d{13,14}$/.test(code)) {
+          return 'ITF14 يتطلب 13-14 رقم فقط';
+        }
+        break;
+      case 'CODE39':
+        if (!/^[A-Z0-9\-. $/+%]+$/.test(code)) {
+          return 'CODE39 يدعم الأحرف الكبيرة والأرقام والرموز المحددة فقط';
+        }
+        break;
+      case 'CODE128':
+        // CODE128 supports most characters, very flexible
+        if (code.length === 0) {
+          return 'كود المنتج لا يمكن أن يكون فارغاً';
+        }
+        break;
+      default:
+        return null;
+    }
+    return null;
+  };
+
   // Generate barcode
   useEffect(() => {
     if (canvasRef.current && productCode) {
+      // Validate input first
+      const error = validateBarcodeInput(productCode, barcodeFormat);
+      setValidationError(error);
+      
+      if (error) {
+        // Show error message on canvas
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        ctx.fillStyle = '#ef4444';
+        ctx.font = 'bold 16px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('خطأ في التحقق من الكود', canvasRef.current.width / 2, canvasRef.current.height / 2 - 10);
+        ctx.font = '14px Arial';
+        ctx.fillText(error, canvasRef.current.width / 2, canvasRef.current.height / 2 + 15);
+        return;
+      }
+      
       try {
         const size = sizeOptions[barcodeSize];
         
@@ -50,7 +110,7 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
         // Show error message on canvas
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        ctx.fillStyle = '#ff0000';
+        ctx.fillStyle = '#ef4444';
         ctx.font = '16px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('خطأ في توليد الباركود', canvasRef.current.width / 2, canvasRef.current.height / 2);
@@ -224,7 +284,12 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
               <div className="grid grid-cols-3 gap-4">
                 <button
                   onClick={downloadBarcode}
-                  className="flex flex-col items-center p-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  disabled={validationError}
+                  className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
+                    validationError 
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:shadow-lg transform hover:scale-105'
+                  }`}
                 >
                   <Download className="h-6 w-6 mb-2" />
                   <span className="text-sm font-medium">تحميل</span>
@@ -232,7 +297,12 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
                 
                 <button
                   onClick={printBarcode}
-                  className="flex flex-col items-center p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  disabled={validationError}
+                  className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
+                    validationError 
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:shadow-lg transform hover:scale-105'
+                  }`}
                 >
                   <Printer className="h-6 w-6 mb-2" />
                   <span className="text-sm font-medium">طباعة</span>
@@ -240,7 +310,12 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
                 
                 <button
                   onClick={copyBarcode}
-                  className="flex flex-col items-center p-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  disabled={validationError}
+                  className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
+                    validationError 
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-purple-500 to-pink-600 text-white hover:shadow-lg transform hover:scale-105'
+                  }`}
                 >
                   <Copy className="h-6 w-6 mb-2" />
                   <span className="text-sm font-medium">نسخ</span>
@@ -324,6 +399,24 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
                   </div>
                 </div>
               </div>
+              
+              {/* Validation Error Message */}
+              {validationError && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                      <span className="text-red-600 text-lg">⚠️</span>
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-red-800 mb-1">خطأ في التحقق</h5>
+                      <p className="text-red-700 text-sm">{validationError}</p>
+                      <p className="text-red-600 text-xs mt-1">
+                        يرجى تغيير نوع الباركود أو تعديل كود المنتج
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
