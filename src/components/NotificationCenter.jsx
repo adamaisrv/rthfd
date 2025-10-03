@@ -39,16 +39,20 @@ export default function NotificationCenter() {
       {/* Notification Bell */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20"
+        className="group relative p-3 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-blue-200/50 hover:border-blue-300/50"
       >
-        <Bell className="h-6 w-6 text-gray-600" />
+        <Bell className="h-6 w-6 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
         {unreadCount > 0 && (
-          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center animate-pulse shadow-lg">
             <span className="text-white text-xs font-bold">
               {unreadCount > 9 ? '9+' : unreadCount}
             </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 rounded-full animate-ping opacity-75"></div>
           </div>
         )}
+        
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl -z-10"></div>
       </button>
 
       {/* Notification Panel */}

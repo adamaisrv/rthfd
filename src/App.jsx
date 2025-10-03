@@ -43,7 +43,7 @@ function App() {
               <div className="flex items-center space-x-4">
                 <AlertCenter />
                 <NotificationCenter />
-                <div className="text-right">
+                <div className="text-right bg-gradient-to-br from-gray-50 to-slate-50 px-4 py-2 rounded-2xl border border-gray-200/50 shadow-sm">
                   <p className="text-sm font-medium text-gray-900">مرحباً بك</p>
                   <p className="text-xs text-gray-500">{new Date().toLocaleDateString('ar-SA')}</p>
                 </div>

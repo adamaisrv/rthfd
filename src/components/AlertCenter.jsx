@@ -92,16 +92,24 @@ export default function AlertCenter() {
       {/* Alert Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20"
+        className="group relative p-3 bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-orange-200/50 hover:border-orange-300/50"
       >
-        <AlertTriangle className={`h-6 w-6 ${totalAlerts > 0 ? 'text-red-500 animate-pulse' : 'text-gray-600'}`} />
+        <AlertTriangle className={`h-6 w-6 transition-all duration-300 ${
+          totalAlerts > 0 
+            ? 'text-red-500 group-hover:text-red-600 animate-pulse' 
+            : 'text-orange-500 group-hover:text-orange-600'
+        }`} />
         {totalAlerts > 0 && (
-          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center animate-bounce">
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
             <span className="text-white text-xs font-bold">
               {totalAlerts > 9 ? '9+' : totalAlerts}
             </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 rounded-full animate-ping opacity-75"></div>
           </div>
         )}
+        
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl -z-10"></div>
       </button>
 
       {/* Alert Panel */}
