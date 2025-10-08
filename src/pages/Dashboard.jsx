@@ -21,7 +21,7 @@ export default function Dashboard() {
     },
     {
       title: 'قيمة المخزون',
-      value: `${storeStats.totalValue.toLocaleString()} ر.س`,
+      value: `${storeStats.totalValue.toLocaleString()} دج`,
       icon: DollarSign,
       color: 'bg-green-500'
     },

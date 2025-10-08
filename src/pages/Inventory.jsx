@@ -86,7 +86,7 @@ export default function Inventory() {
           },
           {
             title: 'قيمة المخزون',
-            value: `${stats.totalValue.toLocaleString()} ر.س`,
+            value: `${stats.totalValue.toLocaleString()} دج`,
             icon: Package,
             color: 'from-purple-500 to-pink-600',
             bgColor: 'from-purple-50 to-pink-50'

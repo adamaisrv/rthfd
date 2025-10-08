@@ -182,7 +182,7 @@ export default function Reports() {
           },
           {
             title: 'قيمة المخزون',
-            value: `${stats.totalValue.toLocaleString()} ر.س`,
+            value: `${stats.totalValue.toLocaleString()} دج`,
             icon: BarChart3,
             color: 'from-purple-500 to-pink-600',
             bgColor: 'from-purple-50 to-pink-50'
@@ -306,7 +306,7 @@ export default function Reports() {
                       <span className="text-gray-700 font-medium">{category}</span>
                       <div className="flex items-center gap-3">
                         <span className="text-sm text-gray-600">
-                          {data.count} منتج - {data.totalValue.toLocaleString()} ر.س
+                          {data.count} منتج - {data.totalValue.toLocaleString()} دج
                         </span>
                         <span className="text-sm font-bold text-gray-900">
                           {percentage.toFixed(1)}%

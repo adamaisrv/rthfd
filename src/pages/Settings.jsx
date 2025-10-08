@@ -115,6 +115,7 @@ export default function Settings() {
                 onChange={(e) => handleSettingChange('currency', null, e.target.value)}
                 className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300"
               >
+                <option value="DZD">دينار جزائري (دج)</option>
                 <option value="SAR">ريال سعودي (ر.س)</option>
                 <option value="USD">دولار أمريكي ($)</option>
                 <option value="EUR">يورو (€)</option>
