@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Plus, Search, Edit, Trash2, AlertTriangle, QrCode, Camera, FileSpreadsheet } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, AlertTriangle, QrCode, Camera, FileSpreadsheet, Truck } from 'lucide-react';
 import ProductModal from '../components/ProductModal';
 import BarcodeGenerator from '../components/BarcodeGenerator';
 import BarcodeScanner from '../components/BarcodeScanner';
 import DataImportExport from '../components/DataImportExport';
+import DeliveryLabelGenerator from '../components/DeliveryLabelGenerator';
 import { useStore } from '../store/useStore';
 
 export default function Products() {
@@ -30,6 +31,10 @@ export default function Products() {
   const [barcodeGeneratorOpen, setBarcodeGeneratorOpen] = useState(false);
   const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false);
   const [selectedProductForBarcode, setSelectedProductForBarcode] = useState(null);
+  
+  // Delivery label state
+  const [deliveryLabelOpen, setDeliveryLabelOpen] = useState(false);
+  const [selectedProductForDelivery, setSelectedProductForDelivery] = useState(null);
 
   // Import/Export state
   const [importExportOpen, setImportExportOpen] = useState(false);
@@ -90,6 +95,12 @@ export default function Products() {
     }
 
     setBarcodeScannerOpen(false);
+  };
+
+  // Delivery label functions
+  const handleGenerateDeliveryLabel = (product) => {
+    setSelectedProductForDelivery(product);
+    setDeliveryLabelOpen(true);
   };
 
   // Check for alerts on component mount
@@ -256,6 +267,13 @@ export default function Products() {
                         <QrCode className="h-4 w-4" />
                       </button>
                       <button
+                        onClick={() => handleGenerateDeliveryLabel(product)}
+                        className="p-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:shadow-lg transform hover:scale-110 transition-all duration-300"
+                        title="ملصق التوصيل"
+                      >
+                        <Truck className="h-4 w-4" />
+                      </button>
+                      <button
                         onClick={() => openProductModal(product)}
                         className="p-2 bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-xl hover:shadow-lg transform hover:scale-110 transition-all duration-300"
                         title="تعديل"
@@ -310,6 +328,17 @@ export default function Products() {
       {importExportOpen && (
         <DataImportExport
           onClose={() => setImportExportOpen(false)}
+        />
+      )}
+
+      {/* Delivery Label Generator Modal */}
+      {deliveryLabelOpen && selectedProductForDelivery && (
+        <DeliveryLabelGenerator
+          product={selectedProductForDelivery}
+          onClose={() => {
+            setDeliveryLabelOpen(false);
+            setSelectedProductForDelivery(null);
+          }}
         />
       )}
     </div>

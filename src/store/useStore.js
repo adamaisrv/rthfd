@@ -4,7 +4,7 @@ import { inventoryNotifications, checkInventoryAlerts } from '../utils/notificat
 
 // Default settings object
 const defaultSettings = {
-  currency: 'SAR',
+  currency: 'DZD',
   language: 'ar',
   notifications: {
     sound: true,
@@ -115,7 +115,7 @@ const useStore = create(
 
       // Settings state
       settings: {
-        currency: 'SAR',
+        currency: 'DZD',
         language: 'ar',
         theme: 'light',
         notifications: {
@@ -375,7 +375,7 @@ const useStore = create(
 
       resetSettings: () => {
         const defaultSettings = {
-          currency: 'SAR',
+          currency: 'DZD',
           language: 'ar',
           theme: 'light',
           notifications: {
