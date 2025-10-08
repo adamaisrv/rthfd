@@ -77,19 +77,19 @@
 
 /* High z-index for dropdowns and overlays */
 .dropdown-overlay {
-  z-index: 99999 !important;
+  z-index: 50000 !important;
 }
 
 .notification-panel {
-  z-index: 99999 !important;
+  z-index: 50000 !important;
 }
 
 .alert-panel {
-  z-index: 99999 !important;
+  z-index: 50000 !important;
 }
 
 .theme-toggle-panel {
-  z-index: 99999 !important;
+  z-index: 50000 !important;
 }
 
 /* Ensure header elements are above content */
@@ -99,12 +99,17 @@ header {
 
 /* Ensure sidebar is properly layered */
 .sidebar {
-  z-index: 40 !important;
+  z-index: 30 !important;
 }
 
 /* Main content should be below overlays */
 main {
   z-index: 10 !important;
+}
+
+/* Delivery modal should be above everything */
+.delivery-modal {
+  z-index: 99999 !important;
 }
 
 /* Animations */

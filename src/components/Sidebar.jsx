@@ -28,7 +28,7 @@ export default function Sidebar({ open, setOpen }) {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setOpen(false)} />
       </div>
 
-      <div className={`fixed top-0 right-0 z-40 w-64 h-full bg-white shadow-2xl transform transition-all duration-500 ease-in-out lg:translate-x-0 lg:static lg:inset-0 sidebar ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 z-30 w-64 h-full bg-white shadow-2xl transform transition-all duration-500 ease-in-out lg:translate-x-0 lg:static lg:inset-0 sidebar ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between h-20 px-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
