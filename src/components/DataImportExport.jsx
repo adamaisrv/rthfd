@@ -42,7 +42,7 @@ export default function DataImportExport({ onClose }) {
     const summaryData = [
       { 'الإحصائية': 'إجمالي المنتجات', 'القيمة': stats.totalProducts },
       { 'الإحصائية': 'إجمالي الكمية', 'القيمة': stats.totalQuantity },
-      { 'الإحصائية': 'قيمة المخزون', 'القيمة': `${stats.totalValue.toLocaleString()} ر.س` },
+      { 'الإحصائية': 'قيمة المخزون', 'القيمة': `${stats.totalValue.toLocaleString()} دج` },
       { 'الإحصائية': 'منتجات منخفضة المخزون', 'القيمة': stats.lowStockCount }
     ];
     const summarySheet = XLSX.utils.json_to_sheet(summaryData);
@@ -302,7 +302,7 @@ export default function DataImportExport({ onClose }) {
                         </div>
                         <div className="flex justify-between">
                           <span>قيمة المخزون:</span>
-                          <span className="font-medium">{stats.totalValue.toLocaleString()} ر.س</span>
+                          <span className="font-medium">{stats.totalValue.toLocaleString()} دج</span>
                         </div>
                       </div>
                     </div>
@@ -489,7 +489,7 @@ export default function DataImportExport({ onClose }) {
                                   <td className="px-4 py-3 text-sm text-gray-500">{product.code}</td>
                                   <td className="px-4 py-3 text-sm text-gray-500">{getCategoryName(product.category)}</td>
                                   <td className="px-4 py-3 text-sm text-gray-500">{product.quantity}</td>
-                                  <td className="px-4 py-3 text-sm text-gray-500">{product.price} ر.س</td>
+                                  <td className="px-4 py-3 text-sm text-gray-500">{product.price} دج</td>
                                 </tr>
                               ))}
                             </tbody>
