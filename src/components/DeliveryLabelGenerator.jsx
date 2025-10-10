@@ -5,6 +5,7 @@ import JsBarcode from 'jsbarcode';
 export default function DeliveryLabelGenerator({ product, onClose }) {
   const labelRef = useRef(null);
   const barcodeRef = useRef(null);
+  const { setSidebarOpen } = useStore();
   const [labelData, setLabelData] = useState({
     // Sender Info (Your Business)
     senderName: 'متجر الإلكترونيات المتقدم',
@@ -28,6 +29,14 @@ export default function DeliveryLabelGenerator({ product, onClose }) {
     orderDate: new Date().toLocaleDateString('ar-DZ'),
     notes: ''
   });
+
+  // Hide sidebar when modal opens and restore when closes
+  React.useEffect(() => {
+    setSidebarOpen(false);
+    return () => {
+      // Optionally restore sidebar state when modal closes
+    };
+  }, [setSidebarOpen]);
 
   const wilayas = [
     'أدرار', 'الشلف', 'الأغواط', 'أم البواقي', 'باتنة', 'بجاية', 'بسكرة', 'بشار',
