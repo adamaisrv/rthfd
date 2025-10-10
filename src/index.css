@@ -109,7 +109,18 @@ main {
 
 /* Delivery modal should be above everything */
 .delivery-modal {
-  z-index: 99999 !important;
+  z-index: 999999 !important;
+}
+
+/* Force delivery modal to be on top */
+.delivery-modal-backdrop {
+  z-index: 999998 !important;
+  position: fixed !important;
+}
+
+.delivery-modal-content {
+  z-index: 999999 !important;
+  position: relative !important;
 }
 
 /* Animations */

@@ -148,11 +148,11 @@ export default function DeliveryLabelGenerator({ product, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[99999] overflow-y-auto backdrop-blur-sm">
+    <div className="delivery-modal-backdrop fixed inset-0 overflow-y-auto backdrop-blur-sm" style={{ zIndex: 999998 }}>
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900/50 via-blue-900/30 to-purple-900/50" onClick={onClose} />
         
-        <div className="relative bg-white/95 backdrop-blur-lg rounded-3xl max-w-6xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20 z-[100000]">
+        <div className="delivery-modal-content relative bg-white/95 backdrop-blur-lg rounded-3xl max-w-6xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20" style={{ zIndex: 999999 }}>
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
