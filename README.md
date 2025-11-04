@@ -1,15 +1,15 @@
-# Invex - Inventory Management System
+# Invex - إدارة المخزون الذكية
 
-A modern, responsive inventory management system built with React and Vite.
+نظام حديث ومتجاوب لإدارة المخزون مبني بتقنيات React و Vite.
 
-## Features
+## المميزات
 
-- 📦 Product inventory management
-- 🏷️ Barcode generation and scanning
-- 📊 Dashboard with analytics
-- 📱 Responsive design for all devices
-- 🌓 Light/Dark mode support
-- 📥 CSV import/export functionality
+- 📦 إدارة مخزون المنتجات
+- 🏷️ توليد ومسح الباركود
+- 📊 لوحة تحكم مع التحليلات
+- 📱 تصميم متجاوب لجميع الأجهزة
+- 🌓 دعم الوضع الليلي والنهاري
+- 📥 استيراد وتصدير ملفات CSV/Excel
 
 ## Getting Started
 

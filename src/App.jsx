@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Package } from 'lucide-react';
 import BottomNavbar from './components/BottomNavbar';
 import NotificationCenter from './components/NotificationCenter';
 import AlertCenter from './components/AlertCenter';
@@ -24,13 +25,15 @@ function App() {
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">م</span>
+                  <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <Package className="h-6 w-6 text-white" />
                   </div>
-                  <h1 className="text-xl font-bold text-gray-900">
-                    نظام إدارة المخزون المتقدم
-                  </h1>
-                  <p className="text-sm text-gray-500">إدارة ذكية ومتطورة للمخزون</p>
+                  <div>
+                    <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+                      Invex
+                    </h1>
+                    <p className="text-sm text-gray-500">إدارة المخزون الذكية</p>
+                  </div>
                 </div>
               </div>
 
