@@ -5,7 +5,6 @@ import JsBarcode from 'jsbarcode';
 export default function DeliveryLabelGenerator({ product, onClose }) {
   const labelRef = useRef(null);
   const barcodeRef = useRef(null);
-  const { setSidebarOpen } = useStore();
   const [labelData, setLabelData] = useState({
     // Sender Info (Your Business)
     senderName: 'متجر الإلكترونيات المتقدم',
@@ -29,14 +28,6 @@ export default function DeliveryLabelGenerator({ product, onClose }) {
     orderDate: new Date().toLocaleDateString('ar-DZ'),
     notes: ''
   });
-
-  // Hide sidebar when modal opens and restore when closes
-  React.useEffect(() => {
-    setSidebarOpen(false);
-    return () => {
-      // Optionally restore sidebar state when modal closes
-    };
-  }, [setSidebarOpen]);
 
   const wilayas = [
     'أدرار', 'الشلف', 'الأغواط', 'أم البواقي', 'باتنة', 'بجاية', 'بسكرة', 'بشار',
@@ -148,11 +139,11 @@ export default function DeliveryLabelGenerator({ product, onClose }) {
   };
 
   return (
-    <div className="delivery-modal-backdrop fixed inset-0 overflow-y-auto backdrop-blur-sm" style={{ zIndex: 999998 }}>
+    <div className="fixed inset-0 z-[9999] overflow-y-auto backdrop-blur-sm">
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900/50 via-blue-900/30 to-purple-900/50" onClick={onClose} />
         
-        <div className="delivery-modal-content relative bg-white/95 backdrop-blur-lg rounded-3xl max-w-6xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20" style={{ zIndex: 999999 }}>
+        <div className="relative bg-white/95 backdrop-blur-lg rounded-3xl max-w-6xl w-full p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20 z-[10000]">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">

@@ -107,22 +107,6 @@ main {
   z-index: 10 !important;
 }
 
-/* Delivery modal should be above everything */
-.delivery-modal {
-  z-index: 999999 !important;
-}
-
-/* Force delivery modal to be on top */
-.delivery-modal-backdrop {
-  z-index: 999998 !important;
-  position: fixed !important;
-}
-
-.delivery-modal-content {
-  z-index: 999999 !important;
-  position: relative !important;
-}
-
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -147,3 +131,13 @@ main {
 }
 
 /* Badge colors that work in both themes */
+
+/* Bottom navbar safe area */
+.h-safe-area-inset-bottom {
+  height: env(safe-area-inset-bottom, 0px);
+}
+
+/* Ensure content doesn't get hidden behind bottom navbar */
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

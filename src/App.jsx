@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
+import BottomNavbar from './components/BottomNavbar';
 import NotificationCenter from './components/NotificationCenter';
 import AlertCenter from './components/AlertCenter';
 import ToastContainer from './components/ToastContainer';
@@ -12,27 +12,21 @@ import Settings from './pages/Settings';
 import { useStore } from './store/useStore';
 
 function App() {
-  const { sidebarOpen, setSidebarOpen, toggleSidebar } = useStore();
+  const { toggleSidebar } = useStore();
 
   return (
       <Router>
-        <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 pb-20">
           <ToastContainer />
-        <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex flex-col min-h-screen">
           {/* Top Navigation Bar */}
           <header className="bg-white backdrop-blur-lg border-b border-gray-200 shadow-sm relative z-50">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
-                <button
-                  onClick={toggleSidebar}
-                  className="lg:hidden p-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                </button>
-                <div className="hidden lg:block">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">م</span>
+                  </div>
                   <h1 className="text-xl font-bold text-gray-900">
                     نظام إدارة المخزون المتقدم
                   </h1>
@@ -51,7 +45,7 @@ function App() {
             </div>
           </header>
 
-          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10 bg-gray-50">
+          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6 relative z-10 bg-gray-50 pb-4">
             <div className="max-w-7xl mx-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
@@ -63,6 +57,9 @@ function App() {
             </div>
           </main>
         </div>
+        
+        {/* Bottom Navigation */}
+        <BottomNavbar />
       </div>
       </Router>
   );
