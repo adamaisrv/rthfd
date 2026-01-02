@@ -114,7 +114,7 @@ export default function Products() {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-gray-900">
             إدارة المنتجات
           </h1>
           {lowStockProducts.length > 0 && (
@@ -218,13 +218,13 @@ export default function Products() {
                         <span className="text-white font-bold text-sm">{product.name.charAt(0)}</span>
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-gray-900 dark:text-white">{product.name}</div>
+                        <div className="text-sm font-bold text-gray-900">{product.name}</div>
                         <div className="text-xs text-gray-500">{product.description?.substring(0, 30)}...</div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-5 whitespace-nowrap">
-                    <span className="px-3 py-1 bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-gray-200 text-xs rounded-full font-mono font-medium">
+                    <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-full font-mono font-medium">
                       {product.code}
                     </span>
                   </td>
@@ -248,7 +248,7 @@ export default function Products() {
                     </span>
                   </td>
                   <td className="px-6 py-5 whitespace-nowrap">
-                    <span className="text-sm font-bold text-gray-900 dark:text-white">
+                    <span className="text-sm font-bold text-gray-900">
                       {product.price.toLocaleString()} ر.س
                     </span>
                   </td>

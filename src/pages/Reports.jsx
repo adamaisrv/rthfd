@@ -237,7 +237,7 @@ export default function Reports() {
                   <report.icon className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                     {report.title}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">

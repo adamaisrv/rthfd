@@ -75,7 +75,7 @@ export default function ProductModal({ isOpen, onClose, onSubmit, product }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Information */}
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-200/50">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+              <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg mr-2"></div>
                 المعلومات الأساسية
               </h4>
@@ -109,7 +109,7 @@ export default function ProductModal({ isOpen, onClose, onSubmit, product }) {
 
             {/* Category and Description */}
             <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200/50">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+              <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg mr-2"></div>
                 التصنيف والوصف
               </h4>
@@ -148,7 +148,7 @@ export default function ProductModal({ isOpen, onClose, onSubmit, product }) {
 
             {/* Inventory Information */}
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200/50">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+              <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg mr-2"></div>
                 معلومات المخزون
               </h4>
@@ -181,7 +181,7 @@ export default function ProductModal({ isOpen, onClose, onSubmit, product }) {
 
             {/* Financial Information */}
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200/50">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+              <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg mr-2"></div>
                 المعلومات المالية والتواريخ
               </h4>
@@ -213,7 +213,7 @@ export default function ProductModal({ isOpen, onClose, onSubmit, product }) {
 
             {/* Location and Supplier */}
             <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-200/50">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+              <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <div className="w-6 h-6 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg mr-2"></div>
                 الموقع والمورد
               </h4>

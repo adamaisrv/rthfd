@@ -184,12 +184,12 @@ export default function Inventory() {
                         </div>
                         <div>
                           <div className="text-sm font-bold text-gray-900">{product.name}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{product.code}</div>
+                          <div className="text-xs text-gray-500">{product.code}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-5 whitespace-nowrap">
-                      <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full font-medium">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">
                         {getCategoryName(product.category)}
                       </span>
                     </td>
