@@ -3,6 +3,7 @@ import { FileText, Download, Calendar, BarChart3, PieChart, TrendingUp, Package,
 import { useStore } from '../store/useStore';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function Reports() {
   const { products, getStats } = useStore();
@@ -42,7 +43,7 @@ export default function Reports() {
 
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(data, `inventory-report-${new Date().toISOString().split('T')[0]}.xlsx`);
+    saveAs(data, `تقرير_المخزون_${formatDateWestern(new Date(), 'date')}.xlsx`);
   };
 
   const generateLowStockReport = () => {
@@ -64,7 +65,7 @@ export default function Reports() {
 
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(data, `low-stock-report-${new Date().toISOString().split('T')[0]}.xlsx`);
+    saveAs(data, `تقرير_المخزون_المنخفض_${formatDateWestern(new Date(), 'date')}.xlsx`);
   };
 
   const generateCategoryReport = () => {
@@ -97,7 +98,7 @@ export default function Reports() {
 
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(data, `category-report-${new Date().toISOString().split('T')[0]}.xlsx`);
+    saveAs(data, `تقرير_التصنيفات_${formatDateWestern(new Date(), 'date')}.xlsx`);
   };
 
   const reports = [

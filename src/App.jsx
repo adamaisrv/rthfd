@@ -11,6 +11,7 @@ import Inventory from './pages/Inventory';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 import { useStore } from './store/useStore';
+import { formatDateWestern } from './utils/dateFormatter';
 
 function App() {
   const { toggleSidebar } = useStore();
@@ -42,7 +43,7 @@ function App() {
                 <NotificationCenter />
                 <div className="text-right bg-gradient-to-br from-gray-50 to-slate-50 px-4 py-2 rounded-2xl border border-gray-200/50 shadow-sm">
                   <p className="text-sm font-medium text-gray-900">مرحباً بك</p>
-                  <p className="text-xs text-gray-500">{new Date().toLocaleDateString('ar-SA')}</p>
+                  <p className="text-xs text-gray-500">{formatDateWestern(new Date(), 'localeDate')}</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { X, Printer, Download, Package, Truck, MapPin, User, Phone, Calendar } from 'lucide-react';
 import JsBarcode from 'jsbarcode';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function DeliveryLabelGenerator({ product, onClose }) {
   const labelRef = useRef(null);
@@ -25,7 +26,7 @@ export default function DeliveryLabelGenerator({ product, onClose }) {
     
     // Order Info
     orderNumber: `ORD-${Date.now().toString().slice(-6)}`,
-    orderDate: new Date().toLocaleDateString('ar-DZ'),
+    orderDate: formatDateWestern(new Date(), 'localeDate'),
     notes: ''
   });
 

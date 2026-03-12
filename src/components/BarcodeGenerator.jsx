@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import JsBarcode from 'jsbarcode';
 import { Download, Printer, Copy, RefreshCw } from 'lucide-react';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function BarcodeGenerator({ productCode, productName, onClose }) {
   const canvasRef = useRef(null);
@@ -174,7 +175,7 @@ export default function BarcodeGenerator({ productCode, productName, onClose }) 
               <div class="product-info">
                 <div>اسم المنتج: ${productName}</div>
                 <div>كود المنتج: ${productCode}</div>
-                <div>تاريخ الطباعة: ${new Date().toLocaleDateString('ar-SA')}</div>
+                <div>تاريخ الطباعة: ${formatDateWestern(new Date(), 'localeDate')}</div>
               </div>
               <div class="barcode-image">
                 <img src="${imageData}" alt="Barcode" />

@@ -4,6 +4,7 @@ import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import Papa from 'papaparse';
 import { useStore } from '../store/useStore';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function DataImportExport({ onClose }) {
   const [activeTab, setActiveTab] = useState('export');
@@ -30,8 +31,8 @@ export default function DataImportExport({ onClose }) {
       'المورد': product.supplier,
       'تاريخ انتهاء الصلاحية': product.expiryDate,
       'الوصف': product.description,
-      'تاريخ الإنشاء': new Date(product.createdAt).toLocaleDateString('ar-SA'),
-      'تاريخ التحديث': new Date(product.updatedAt).toLocaleDateString('ar-SA')
+      'تاريخ الإنشاء': formatDateWestern(product.createdAt, 'localeDate'),
+      'تاريخ التحديث': formatDateWestern(product.updatedAt, 'localeDate')
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(exportData);
@@ -50,7 +51,7 @@ export default function DataImportExport({ onClose }) {
 
     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(data, `inventory-${new Date().toISOString().split('T')[0]}.xlsx`);
+    saveAs(data, `المخزون_${formatDateWestern(new Date(), 'date')}.xlsx`);
   };
 
   const exportToCSV = () => {
@@ -73,7 +74,7 @@ export default function DataImportExport({ onClose }) {
     });
 
     const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, `inventory-${new Date().toISOString().split('T')[0]}.csv`);
+    saveAs(blob, `المنتجات_${formatDateWestern(new Date(), 'date')}.csv`);
   };
 
   // Import functions

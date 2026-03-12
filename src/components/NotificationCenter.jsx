@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { useNotificationStore } from '../store/useStore';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function NotificationCenter() {
   const [isOpen, setIsOpen] = useState(false);
@@ -124,7 +125,7 @@ export default function NotificationCenter() {
                               {notification.message}
                             </p>
                             <p className="text-gray-400 text-xs mt-2">
-                              {new Date(notification.timestamp).toLocaleString('ar-SA')}
+                              {formatDateWestern(notification.timestamp, 'datetime')}
                             </p>
                           </div>
                         </div>

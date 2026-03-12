@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Quagga from 'quagga';
 import { Camera, CameraOff, Search, CheckCircle, XCircle } from 'lucide-react';
+import { formatDateWestern } from '../utils/dateFormatter';
 
 export default function BarcodeScanner({ onScan, onClose }) {
   const scannerRef = useRef(null);
@@ -275,7 +276,7 @@ export default function BarcodeScanner({ onScan, onClose }) {
                           <div>
                             <p className="font-mono font-bold text-gray-900">{code}</p>
                             <p className="text-xs text-gray-500">
-                              {new Date().toLocaleTimeString('ar-SA')}
+                              {formatDateWestern(new Date(), 'time')}
                             </p>
                           </div>
                         </div>
