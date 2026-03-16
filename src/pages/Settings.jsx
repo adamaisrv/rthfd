@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Settings as SettingsIcon, Save, RotateCcw, Bell, Palette, Monitor, Shield, Database } from 'lucide-react';
 import { useStore } from '../store/useStore';
 
@@ -6,6 +6,10 @@ export default function Settings() {
   const { settings, updateSettings, resetSettings } = useStore();
   const [localSettings, setLocalSettings] = useState(settings);
   const [hasChanges, setHasChanges] = useState(false);
+
+  useEffect(() => {
+    setLocalSettings(settings);
+  }, [settings]);
 
   const handleSettingChange = (category, key, value) => {
     let newSettings;
