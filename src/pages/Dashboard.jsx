@@ -1,9 +1,10 @@
 import React from 'react';
 import { Package, AlertTriangle, TrendingUp, DollarSign } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import { formatCurrency } from '../utils/dateFormatter';
 
 export default function Dashboard() {
-  const { getStats } = useStore();
+  const { getStats, settings } = useStore();
   const storeStats = getStats();
 
   const stats = [
@@ -21,7 +22,7 @@ export default function Dashboard() {
     },
     {
       title: 'قيمة المخزون',
-      value: `${storeStats.totalValue.toLocaleString()} دج`,
+      value: formatCurrency(storeStats.totalValue, settings.currency),
       icon: DollarSign,
       color: 'bg-green-500'
     },

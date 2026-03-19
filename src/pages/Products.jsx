@@ -6,6 +6,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
 import DataImportExport from '../components/DataImportExport';
 import DeliveryLabelGenerator from '../components/DeliveryLabelGenerator';
 import { useStore } from '../store/useStore';
+import { formatCurrency } from '../utils/dateFormatter';
 
 export default function Products() {
   // Zustand store hooks
@@ -20,7 +21,8 @@ export default function Products() {
     addProduct,
     updateProduct,
     deleteProduct,
-    getStats
+    getStats,
+    settings
   } = useStore();
 
   const filteredProducts = getFilteredProducts();
@@ -249,7 +251,7 @@ export default function Products() {
                   </td>
                   <td className="px-6 py-5 whitespace-nowrap">
                     <span className="text-sm font-bold text-gray-900">
-                      {product.price.toLocaleString()} ر.س
+                      {formatCurrency(product.price, settings.currency)}
                     </span>
                   </td>
                   <td className="px-6 py-5 whitespace-nowrap">

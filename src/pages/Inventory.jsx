@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Package, Plus, Minus, Edit, Search, Filter, BarChart3, AlertTriangle } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import { formatCurrency } from '../utils/dateFormatter';
 
 export default function Inventory() {
-  const { products, updateStock, getStats } = useStore();
+  const { products, updateStock, getStats, settings } = useStore();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [stockUpdateModal, setStockUpdateModal] = useState(null);
@@ -86,7 +87,7 @@ export default function Inventory() {
           },
           {
             title: 'قيمة المخزون',
-            value: `${stats.totalValue.toLocaleString()} دج`,
+            value: formatCurrency(stats.totalValue, settings.currency),
             icon: Package,
             color: 'from-purple-500 to-pink-600',
             bgColor: 'from-purple-50 to-pink-50'

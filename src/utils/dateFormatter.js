@@ -34,3 +34,15 @@ export function formatDateWestern(date, format = 'date') {
 
   return d.toISOString();
 }
+
+export function formatCurrency(value, currency = 'DZD') {
+  const currencySymbols = {
+    'DZD': 'دج',
+    'SAR': 'ر.س',
+    'USD': '$',
+    'EUR': '€'
+  };
+
+  const symbol = currencySymbols[currency] || currency;
+  return `${value.toLocaleString()} ${symbol}`;
+}
