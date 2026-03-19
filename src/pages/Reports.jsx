@@ -307,7 +307,7 @@ export default function Reports() {
                       <span className="text-gray-700 font-medium">{category}</span>
                       <div className="flex items-center gap-3">
                         <span className="text-sm text-gray-600">
-                          {data.count} منتج - {data.totalValue.toLocaleString()} دج
+                          {data.count} منتج - {formatCurrency(data.totalValue, settings.currency)}
                         </span>
                         <span className="text-sm font-bold text-gray-900">
                           {percentage.toFixed(1)}%
