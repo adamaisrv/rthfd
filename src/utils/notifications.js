@@ -3,6 +3,13 @@
 export class NotificationManager {
   constructor() {
     this.permission = 'default';
+    this.settings = {
+      sound: true,
+      browser: true,
+      email: false,
+      lowStock: true,
+      expiry: true
+    };
     this.sounds = {
       success: '/sounds/success.mp3',
       warning: '/sounds/warning.mp3',
@@ -10,6 +17,10 @@ export class NotificationManager {
       info: '/sounds/info.mp3'
     };
     this.init();
+  }
+
+  setSettings(settings) {
+    this.settings = { ...this.settings, ...settings };
   }
 
   async init() {
@@ -60,7 +71,7 @@ export class NotificationManager {
 
   // Show browser notification
   showBrowserNotification(title, message, type = 'info', options = {}) {
-    if (this.permission !== 'granted') {
+    if (!this.settings.browser || this.permission !== 'granted') {
       return false;
     }
 
@@ -73,7 +84,7 @@ export class NotificationManager {
 
     const notification = new Notification(title, {
       body: message,
-      icon: `/icons/${type}.png`, // You can add actual icon files
+      icon: `/icons/${type}.png`,
       badge: '/icons/badge.png',
       tag: `inventory-${type}`,
       requireInteraction: type === 'error' || type === 'warning',
@@ -81,7 +92,6 @@ export class NotificationManager {
       ...options
     });
 
-    // Auto close after 5 seconds for non-critical notifications
     if (type === 'success' || type === 'info') {
       setTimeout(() => notification.close(), 5000);
     }
@@ -91,17 +101,17 @@ export class NotificationManager {
 
   // Show complete notification (sound + browser notification + in-app + toast)
   notify(title, message, type = 'info', options = {}) {
-    // Play sound
-    if (options.playSound !== false) {
+    // Play sound if enabled in settings
+    if (this.settings.sound && options.playSound !== false) {
       this.playSound(type);
     }
 
-    // Show browser notification
-    if (options.showBrowser !== false) {
+    // Show browser notification if enabled in settings
+    if (this.settings.browser && options.showBrowser !== false) {
       this.showBrowserNotification(title, message, type, options);
     }
 
-    // Show toast notification
+    // Show toast notification (always show, but respects showToast option)
     if (options.showToast !== false) {
       const event = new CustomEvent('show-toast', {
         detail: {
@@ -148,6 +158,9 @@ export const notificationManager = new NotificationManager();
 // Inventory-specific notification helpers
 export const inventoryNotifications = {
   lowStock: (productName, currentQuantity, minQuantity) => {
+    if (!notificationManager.settings.lowStock) {
+      return null;
+    }
     return notificationManager.warning(
       'تنبيه مخزون منخفض',
       `${productName} - الكمية الحالية: ${currentQuantity} (الحد الأدنى: ${minQuantity})`,
@@ -162,6 +175,9 @@ export const inventoryNotifications = {
   },
 
   expiringProduct: (productName, daysUntilExpiry) => {
+    if (!notificationManager.settings.expiry) {
+      return null;
+    }
     return notificationManager.warning(
       'تنبيه انتهاء صلاحية',
       `${productName} - ينتهي خلال ${daysUntilExpiry} يوم`,

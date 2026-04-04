@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { inventoryNotifications, checkInventoryAlerts } from '../utils/notifications';
+import { inventoryNotifications, checkInventoryAlerts, notificationManager } from '../utils/notifications';
 
 // Default settings object
 const defaultSettings = {
@@ -361,9 +361,14 @@ const useStore = create(
 
       // Settings actions
       updateSettings: (newSettings) => {
-        console.log('Updating settings:', newSettings); // Debug log
+        console.log('Updating settings:', newSettings);
         set({ settings: newSettings });
-        
+
+        // Update notification manager settings
+        if (newSettings.notifications) {
+          notificationManager.setSettings(newSettings.notifications);
+        }
+
         // Force theme application
         if (newSettings.theme) {
           setTimeout(() => {
@@ -410,6 +415,7 @@ const useStore = create(
           }
         };
         set({ settings: defaultSettings });
+        notificationManager.setSettings(defaultSettings.notifications);
       },
 
       updateColorScheme: (colors) => {

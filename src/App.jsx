@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Package } from 'lucide-react';
 import BottomNavbar from './components/BottomNavbar';
@@ -12,9 +12,16 @@ import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 import { useStore } from './store/useStore';
 import { formatDateWestern } from './utils/dateFormatter';
+import { notificationManager } from './utils/notifications';
 
 function App() {
-  const { toggleSidebar } = useStore();
+  const { toggleSidebar, settings } = useStore();
+
+  useEffect(() => {
+    if (settings.notifications) {
+      notificationManager.setSettings(settings.notifications);
+    }
+  }, [settings.notifications]);
 
   return (
       <Router>
