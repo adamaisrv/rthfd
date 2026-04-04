@@ -21,7 +21,17 @@ function App() {
     if (settings.notifications) {
       notificationManager.setSettings(settings.notifications);
     }
-  }, [settings.notifications]);
+
+    const handleNotificationSettingsUpdate = (event) => {
+      notificationManager.setSettings(event.detail);
+    };
+
+    window.addEventListener('notifications-settings-updated', handleNotificationSettingsUpdate);
+
+    return () => {
+      window.removeEventListener('notifications-settings-updated', handleNotificationSettingsUpdate);
+    };
+  }, []);
 
   return (
       <Router>

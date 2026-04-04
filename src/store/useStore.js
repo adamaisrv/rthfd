@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { inventoryNotifications, checkInventoryAlerts, notificationManager } from '../utils/notifications';
+import { inventoryNotifications, checkInventoryAlerts } from '../utils/notifications';
 
 // Default settings object
 const defaultSettings = {
@@ -364,9 +364,9 @@ const useStore = create(
         console.log('Updating settings:', newSettings);
         set({ settings: newSettings });
 
-        // Update notification manager settings
+        // Dispatch event for notification settings update
         if (newSettings.notifications) {
-          notificationManager.setSettings(newSettings.notifications);
+          window.dispatchEvent(new CustomEvent('notifications-settings-updated', { detail: newSettings.notifications }));
         }
 
         // Force theme application
@@ -415,7 +415,7 @@ const useStore = create(
           }
         };
         set({ settings: defaultSettings });
-        notificationManager.setSettings(defaultSettings.notifications);
+        window.dispatchEvent(new CustomEvent('notifications-settings-updated', { detail: defaultSettings.notifications }));
       },
 
       updateColorScheme: (colors) => {
